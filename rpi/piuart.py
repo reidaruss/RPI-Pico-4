@@ -10,7 +10,13 @@ while True:
 
     line = ser.readline().decode('utf-8').rstrip()
     print(line[2:11])
+    line = line[2:11]
     s = line.split(',')
-    db_temp = DB_Add()
-    db_temp.insertMeasurement(s[0],s[1],0)
-    time.sleep(2)
+    #print(s)
+    try:
+        db_temp = DB_Add()
+        db_temp.insertMeasurement(s[0],s[1],0)
+    except:
+        print("Error adding to db")
+        continue
+    time.sleep(60*10)
