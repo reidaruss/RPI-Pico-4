@@ -11,6 +11,6 @@ class Runner:
         # Receive Data, Store into Database
         self.receiver.listen()
         
-        self.transmitter.sendMessage(10)
+        #self.transmitter.sendMessage(10)
         
         

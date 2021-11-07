@@ -5,4 +5,4 @@ class Transmit:
         self.port = '/dev/ttyS0'
         
     def sendMessage(self,message):
-        
+        print(message)
