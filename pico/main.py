@@ -7,6 +7,9 @@ import _thread
 
 pin = Pin(15)
 dht11 = DHT11(pin = Pin(15))
+uart = machine.UART(0, 115200)
+b = None
+msg = ""
 
 def pollAndTransmit():
     while True:
@@ -15,8 +18,21 @@ def pollAndTransmit():
         sleep(10*60)
 
 def listen():
+    print("Listening")
     while True:
-        print("Listening")
+        sleep(1)
+        if uart.any():
+            b = uart.readline()
+            print(type(b))
+            print(b)
+            try:
+                msg = b.decode('utf-8')
+                print(type(msg))
+                print(">> " + msg)
+            except:
+                pass
+
+
 
 
 _thread.start_new_thread(pollAndTransmit, ())
